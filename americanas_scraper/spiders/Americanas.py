@@ -5,7 +5,10 @@ import json
 class AmericanasSpider(scrapy.Spider):
     name = 'Americanas'
     allowed_domains = ['americanas.com.br/']
-    start_urls = ['http://americanas.com.br/produto/423474401']
+    #Celular da primeira busca availability = 'http://schema.org/InStock'
+    #start_urls = ['http://americanas.com.br/produto/134186808']
+    #Fritadeira para verificação de voltagem availability = 'http://schema.org/OutOfStock'
+    start_urls = ['http://americanas.com.br/produto/133659765']
 
     def parse(self, response):
         html_body = response.css('div#content script::text').getall()
@@ -19,7 +22,7 @@ class AmericanasSpider(scrapy.Spider):
         name   = jsonresponse["@graph"][4]["name"]
         img    = jsonresponse["@graph"][4]["image"]["url"]
         seller = jsonresponse["@graph"][0]["name"]
-        price  = jsonresponse["@graph"][4]["offers"]["price"]
+        price  = jsonresponse["@graph"][4]["offers"]["availability"]
 
 
         yield {"id": code, "breadcrumb": breadcrumb, "name": name, "img": img, "seller": seller, "price": price}
