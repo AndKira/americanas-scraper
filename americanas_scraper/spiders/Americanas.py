@@ -19,10 +19,14 @@ class AmericanasSpider(scrapy.Spider):
         breadcrumb = []
         for position in jsonresponse["@graph"][3]["itemListElement"]:
             breadcrumb.append(position["item"]["name"])
-        name   = jsonresponse["@graph"][4]["name"]
-        img    = jsonresponse["@graph"][4]["image"]["url"]
-        seller = jsonresponse["@graph"][0]["name"]
-        price  = jsonresponse["@graph"][4]["offers"]["availability"]
+        name            = jsonresponse["@graph"][4]["name"]
+        img             = jsonresponse["@graph"][4]["image"]["url"]
+        seller          = jsonresponse["@graph"][0]["name"]
+        availability    = jsonresponse["@graph"][4]["offers"]["availability"]
+        if (availability == 'http://schema.org/InStock'):
+            price    = jsonresponse["@graph"][4]["offers"]["price"]
+        elif (availability == 'http://schema.org/OutOfStock'):
+            price    = "fora de estoque"
 
 
         yield {"id": code, "breadcrumb": breadcrumb, "name": name, "img": img, "seller": seller, "price": price}
