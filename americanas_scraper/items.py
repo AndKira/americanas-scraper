@@ -11,4 +11,11 @@ import scrapy
 class AmericanasScraperItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    code        = scrapy.Field()
+    breadcrumb  = scrapy.Field()
+    name        = scrapy.Field()
+    img         = scrapy.Field()
+    seller      = scrapy.Field()
+    price       = scrapy.Field()
+
     pass
