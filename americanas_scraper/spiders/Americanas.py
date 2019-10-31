@@ -9,7 +9,7 @@ class AmericanasSpider(scrapy.Spider):
     #Celular da primeira busca availability = 'http://schema.org/InStock'
     #start_urls = ['http://americanas.com.br/produto/134186808']
     #Fritadeira para verificação de voltagem availability = 'http://schema.org/OutOfStock'
-    start_urls = ['https://www.americanas.com.br/produto/44852639/turbofryer-philips-walita?api=b2wads&chave=b2wads_5cd48f779049080541bf899b_436042004752_44852639_d5985a5c-b71a-4d1c-88ab-d0960a7c512a&pos=2&sellerId=436042004752&sellerName=Polishop&sellerid=436042004752&sellername=Polishop&voltagem=110']
+    start_urls = ['https://www.americanas.com.br/produto/44852639?voltagem=110']
 
     def parse(self, response):
         html_body = response.css('div#content script::text').getall()
