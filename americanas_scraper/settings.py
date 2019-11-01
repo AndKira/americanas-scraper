@@ -22,6 +22,8 @@ USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefo
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
+FEED_EXPORT_ENCODING = 'utf-8'
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
@@ -65,9 +67,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'americanas_scraper.pipelines.AmericanasScraperPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'americanas_scraper.pipelines.AmericanasScraperPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

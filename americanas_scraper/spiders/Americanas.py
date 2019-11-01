@@ -34,5 +34,5 @@ class AmericanasSpider(scrapy.Spider):
             price    = "Fora de estoque"
 
 
-        informacoes = AmericanasScraperItem(code=code, breadcrumb=breadcrumb, name=name, img=img, seller=seller, price=price)
+        informacoes = AmericanasScraperItem(id=code, breadcrumb=breadcrumb, name=name, img=img, seller=seller, price=price)
         yield informacoes
