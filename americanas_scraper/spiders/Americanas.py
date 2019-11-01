@@ -9,7 +9,11 @@ class AmericanasSpider(scrapy.Spider):
     #Celular da primeira busca availability = 'http://schema.org/InStock'
     #start_urls = ['http://americanas.com.br/produto/134186808']
     #Fritadeira para verificação de voltagem availability = 'http://schema.org/OutOfStock'
-    start_urls = ['https://www.americanas.com.br/produto/44852639?voltagem=110']
+    #start_urls = ['https://www.americanas.com.br/produto/44852639']
+
+    def __init__(self, codigo=None, *args, **kwargs):
+        super(AmericanasSpider, self).__init__(*args, **kwargs)
+        self.start_urls = ['https://www.americanas.com.br/produto/%s' % codigo]
 
     def parse(self, response):
         html_body = response.css('div#content script::text').getall()
